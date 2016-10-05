@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Papadams World</title>
+	<style>
+		body {
+		    background-color: #d0e4fe;
+		    font-size: 12px 
+		}
+	</style>
+</h:head>
+<!-- background-image: url("https://img.zmtcdn.com/data/reviews_photos/4f6/6ecec68d5e2a5d239b418e48858a74f6_1463744978.jpg"); -->
+
+<h:body>
+		
+	<h:form>
+	    <p:panel id="panel" header="Papdams Blue Customer Entry Form"  style="margin: auto;width: 40%;border: 3px solid #73AD21;padding: 10px;">
+	        <p:messages id="msgs" />
+	        <h:panelGrid columns="2" cellpadding="5">
+	            <p:outputLabel for="custName" value="Customer Name" />
+	            <p:inputText id="custName" value="#{loginBean.custVO.custName}" label="custName"/>
+	            <p:outputLabel for="custPhNo" value="Mobile Number:" />
+	            <p:inputText id="custPhNo" value="#{loginBean.custVO.custPhNo}" label="phNo"/>
+	             <p:outputLabel for="billAmnt" value="Bill Amount:" />
+	            <p:inputText id="billAmnt" value="#{loginBean.custVO.custBillAmnt}" label="billAmnt"/>
+	            <p:outputLabel for="discount" value="Discount" />
+		       <!--  <p:selectOneListbox id="discount" value="#{loginBean.custVO.discount}">
+		            <f:selectItem itemLabel="5%" itemValue="5%" />
+		            <f:selectItem itemLabel="10%" itemValue="10%" />
+		            <f:selectItem itemLabel="15%" itemValue="15%" />
+		        </p:selectOneListbox>
+	            -->  
+      			 <p:spinner id="discount" value="#{loginBean.custVO.discount}" stepFactor="0.25" />
+        
+	            <p:outputLabel for="expiryPromotion" value="Promotion Expiry Date" />
+        	<!--  	<p:calendar id="expiryPromotion" value="#{loginBean.custVO.promotionExpiryDate}"  mode="inline" /> -->
+        			<p:calendar id="expiryPromotion" value="#{loginBean.custVO.promotionExpiryDate}" pages="3" />
+	        </h:panelGrid> 
+	 
+	        <p:commandButton value="Save Customer" update="panel" action="#{loginBean.savePapadamsCustomers}" icon="ui-icon-check" />
+	     	<h:commandButton value="Reset" icon="ui-icon-check" >
+                <p:ajax update="panel" resetValues="true" />
+            </h:commandButton>
+	    </p:panel>
+
+	</h:form>
+	
+</h:body>
+</html>

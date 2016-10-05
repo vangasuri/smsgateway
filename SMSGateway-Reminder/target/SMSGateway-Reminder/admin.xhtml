@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Admin User</title>
+	<style>
+		body {
+		    background-color: #d0e4fe;
+		    font-size: 12px 
+		}
+		
+	</style>
+</h:head>
+
+<h:body>
+
+<p:megaMenu orientation="#{adminBean.orientation}" style="margin-top:0px">
+    
+            <p:submenu label="Papadams" icon="ui-icon-check">
+		        <p:column>
+		            <p:submenu label="Sub Menu1">
+		                <p:menuitem value="Customers Discount Entry Page" url="papadams.jsf" />
+		            </p:submenu>
+		        </p:column>
+		        <p:column>
+		            <p:submenu label="Sub Menu2">
+		                <p:menuitem value="Search Discount Entry Page" url="searchDiscounts.jsf" />
+		            </p:submenu>
+		        </p:column>
+ 			</p:submenu>
+ 			
+ 			 <p:submenu label="Sweets" icon="ui-icon-check">
+		        <p:column>
+		            <p:submenu label="Entry">
+		                <p:menuitem value="Sweets Reminder Entry Page" url="sweets.jsf" />
+		            </p:submenu>
+		        </p:column>
+ 			</p:submenu>
+ 			
+ 			 <p:submenu label="Hair And Beauty" icon="ui-icon-check">
+		        <p:column>
+		            <p:submenu label="Entry">
+		                <p:menuitem value="Hait And BeautyEntry Page" url="hairandbeauty.jsf" />
+		            </p:submenu>
+		        </p:column>
+ 			</p:submenu>
+ 			
+ 			
+</p:megaMenu>
+	
+</h:body>
+</html>

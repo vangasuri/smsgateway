@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Admin Login</title>
+	<style>
+		body {
+		    background-color: #d0e4fe;
+		    font-size: 12px 
+		}
+		
+	</style>
+</h:head>
+
+<h:body>
+	<h3> Admin Only</h3>
+	
+	<h:form>
+	    <p:panel id="panel" header="Create User" style="margin: auto;width: 40%;border: 3px solid #73AD21;padding: 10px;">
+	        <p:messages id="msgs" />
+	        <h:panelGrid columns="2" cellpadding="5">
+	            <p:outputLabel for="userName" value="Username:" />
+	            <p:inputText id="userName" value="#{helloBean.userName}" label="userName"/>
+	            <p:outputLabel for="password" value="Password:" />
+	            <p:inputText id="password" value="#{helloBean.pwd}" label="password"/>
+	            
+	            <p:selectOneRadio id="userType" value="#{helloBean.userType}">
+	             	<f:selectItem itemLabel="Sweets" itemValue="1" />
+           		 	<f:selectItem itemLabel="Hair And Beauty" itemValue="2" />
+           		 	<f:selectItem itemLabel="LB Nagar Papadams" itemValue="3" />
+           		 	<f:selectItem itemLabel="Papadams Blue" itemValue="4" />
+           		 	<f:selectItem itemLabel="admin" itemValue="5" />
+            	</p:selectOneRadio>
+	           
+	        </h:panelGrid> 
+	 
+	        <p:commandButton value="Create User" update="panel tbl" actionListener="#{helloBean.save}" icon="ui-icon-check" />
+	        
+	     
+	    </p:panel>
+	    <h3> List All Users</h3>
+	    
+	    
+	<!--      <p:dataTable id ="list" var="user" value="#{helloBean.usersList}">
+		    <p:column headerText="User Name">
+		        <h:outputText value="#{user.userName}" />
+		    </p:column>
+		 
+		    <p:column headerText="Password">
+		        <h:outputText value="#{user.pwd}" />
+		    </p:column>
+		 
+		    <p:column headerText="User Type">
+		        <h:outputText value="#{user.userType}" />
+		    </p:column>
+		 
+		    <p:column headerText="User Status">
+		        <h:outputText value="#{user.userStatus}" />
+		    </p:column>
+		</p:dataTable>
+		-->
+		<p:dataTable id="tbl" var="car" value="#{helloBean.usersList}" 
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                 paginator="true" rows="10" style="margin: auto;width: 40%;border: 3px solid #73AD21;padding: 10px;">
+ 
+        <f:facet name="{Exporters}">
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/excel.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="cars" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/pdf.png" width="24"/>
+                <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/csv.png" width="24"/>
+                <p:dataExporter type="csv" target="tbl" fileName="cars" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                <p:dataExporter type="xml" target="tbl" fileName="cars" />
+            </h:commandLink>
+        </f:facet>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Id" />
+            </f:facet>
+            <h:outputText value="#{car.id}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="User Name"/>
+            </f:facet>
+            <h:outputText value="#{car.userName}" />
+        </p:column>
+ 
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="User Type" />
+            </f:facet>
+            <h:outputText value="#{car.userType}" />
+        </p:column>
+ 
+ 		 <p:column>
+            <f:facet name="header">
+                <h:outputText value="Status" />
+            </f:facet>
+            <h:outputText value="#{car.userStatus}" />
+        </p:column>
+        
+       
+    </p:dataTable>
+
+	</h:form>
+	
+</h:body>
+</html>

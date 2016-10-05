@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Search Discounts</title>
+	<style>
+		body {
+		    background-color: #d0e4fe;
+		    font-size: 12px 
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+   		<p:growl id="msgs" showDetail="true" />
+ 
+	    <h:panelGrid >
+	        <p:outputLabel for="startDate" value="Start Date :" />
+	        <p:calendar id="startDate" value="#{adminBean.startDate}" mode="inline" />
+	        <p:outputLabel for="endDate" value="End Date :" />
+	        <p:calendar id="endDate" value="#{adminBean.endDate}" mode="inline" />
+	 	 </h:panelGrid>
+	 	 
+	 	  <p:commandButton value="Search" update="msgs" actionListener="#{adminBean.searchAllNonDiscountedUsers}" icon="ui-icon-check" />
+	</h:form>
+</h:body>
+
+	  <p:dataTable id ="list" var="cust" value="#{adminBean.nonDiscountedCustomersList}">
+	  
+		    <p:column headerText="Customer Name">
+		        <h:outputText value="#{cust.custName}" />
+		    </p:column>
+		 
+		    <p:column headerText="Ph No">
+		        <h:outputText value="#{cust.custPhNo}" />
+		    </p:column>
+		 
+		    <p:column headerText="Bill Amount">
+		        <h:outputText value="#{cust.custBillAmnt}" />
+		    </p:column>
+		 
+		    <p:column headerText="Discount">
+		         <p:spinner id="discount" value="#{cust.discount}" stepFactor="0.25" />
+		    </p:column>
+		    
+		    <p:column headerText="Promotion Expiry Date">
+		           <p:calendar id="button" value="#{cust.promotionExpiryDate}" showOn="button" />
+		    </p:column>
+		  
+		</p:dataTable>
+
+</html>
